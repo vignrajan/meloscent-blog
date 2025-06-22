@@ -1,0 +1,64 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import ScentSageHeader from '../../components/ScentSageHeader.astro';
+import ScentSageFooter from '../../components/ScentSageFooter.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="min-h-screen bg-cream text-charcoal">
+		<ScentSageHeader />
+		
+		<main class="pt-24">
+			<div class="container mx-auto px-4 py-16">
+				<div class="text-center mb-12">
+					<h1 class="font-serif text-4xl md:text-5xl font-bold text-amber-900 mb-4">Fragrance Reviews & Guides</h1>
+					<p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover in-depth reviews of luxury perfumes, affordable alternatives, and expert fragrance guides.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{posts.map((post) => (
+						<article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+							<div class="relative h-60 overflow-hidden">
+								<img 
+									src={post.data.heroImage || '/blog-placeholder-1.jpg'} 
+									alt={post.data.title} 
+									class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+								/>
+							</div>
+							<div class="p-6">
+								<div class="flex items-center text-sm text-gray-500 mb-3">
+									<FormattedDate date={post.data.pubDate} />
+								</div>
+								<h2 class="font-serif text-xl font-semibold mb-3 text-amber-900">
+									<a href={`/blog/${post.id}/`} class="hover:text-amber-700 transition-colors">
+										{post.data.title}
+									</a>
+								</h2>
+								<p class="text-gray-600 mb-4 line-clamp-3">{post.data.description}</p>
+								<a 
+									href={`/blog/${post.id}/`} 
+									class="text-amber-700 hover:text-amber-900 transition-colors flex items-center text-sm font-medium"
+								>
+									Read More <i class="fas fa-long-arrow-alt-right ml-2"></i>
+								</a>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</main>
+
+		<ScentSageFooter />
+	</body>
+</html>
