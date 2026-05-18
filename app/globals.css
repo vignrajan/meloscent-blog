@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F2EE;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Responsive nav helpers */
+@media (max-width: 768px) {
+  .hidden-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .show-mobile { display: none !important; }
+}
+
+/* Responsive grid helpers */
+@media (max-width: 1024px) {
+  .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .latest-feed { grid-template-columns: 1fr !important; }
+  .article-layout { grid-template-columns: 1fr !important; }
+  .hero-card { flex-direction: column !important; }
+  .hero-left { width: 100% !important; }
+}
+@media (max-width: 640px) {
+  .grid-2col { grid-template-columns: 1fr !important; }
+  .newsletter-grid { grid-template-columns: 1fr !important; }
+}
