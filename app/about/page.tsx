@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '100px 24px 60px' }}>
+      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '48px 24px 60px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-0.03em', color: '#111111', margin: '0 0 24px', lineHeight: 1.1 }}>
           We take fragrance seriously.
         </h1>

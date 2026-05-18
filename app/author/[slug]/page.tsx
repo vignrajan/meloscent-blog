@@ -32,7 +32,7 @@ export default function AuthorPage({ params }: Props) {
   return (
     <>
       <Header />
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '100px 24px 60px' }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 24px 60px' }}>
         <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', marginBottom: '48px' }}>
           <div style={{ position: 'relative', width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
             <Image src={author.photo} alt={author.name} fill style={{ objectFit: 'cover' }} sizes="120px" priority />

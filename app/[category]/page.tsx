@@ -36,7 +36,7 @@ export default function CategoryPage({ params }: Props) {
   return (
     <>
       <Header />
-      <div style={{ backgroundColor: bgTint, paddingTop: '100px', paddingBottom: '48px', marginTop: '0' }}>
+      <div style={{ backgroundColor: bgTint, paddingTop: '48px', paddingBottom: '48px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <h1 style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-0.02em', color: '#111111', margin: '0 0 12px' }}>
             {category.name}

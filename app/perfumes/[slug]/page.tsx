@@ -52,7 +52,7 @@ export default async function PerfumePage({ params }: PageProps) {
     <>
       <Header />
 
-      <main style={{ backgroundColor: '#F5F2EE', minHeight: '100vh', paddingTop: '80px', paddingBottom: '80px' }}>
+      <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', paddingTop: '32px', paddingBottom: '80px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           {/* Breadcrumb */}
           <nav style={{ marginBottom: '24px', fontSize: '13px', color: '#9A9590' }}>
@@ -194,7 +194,7 @@ export default async function PerfumePage({ params }: PageProps) {
             </div>
 
             {/* RIGHT COLUMN (sticky) */}
-            <div style={{ position: 'sticky', top: '80px' }}>
+            <div style={{ position: 'sticky', top: '80px', alignSelf: 'start' }}>
               {/* Bottle Image */}
               <div
                 style={{

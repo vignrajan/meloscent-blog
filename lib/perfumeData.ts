@@ -50,13 +50,23 @@ const ACCORD_COLORS: Record<string, string> = {
   Vanilla: '#D4A853',
 };
 
-// Unsplash bottle images (cycle through)
+// Unique Unsplash bottle images — one per perfume
 const BOTTLE_IMAGES = [
-  'https://images.unsplash.com/photo-1590736969596-0c88d2a7a80f?w=400',
-  'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400',
-  'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400',
-  'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400',
-  'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400',
+  'https://images.unsplash.com/photo-1590736969596-0c88d2a7a80f?w=400', // Aventus
+  'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400',   // Baccarat Rouge
+  'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400', // Sauvage
+  'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400', // Chanel No.5
+  'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400', // Black Orchid
+  'https://images.unsplash.com/photo-1563170351-be54751b0f18?w=400',   // Santal 33
+  'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=400', // Black Opium
+  'https://images.unsplash.com/photo-1588514912908-c0d9de2c2a26?w=400', // Beach Walk
+  'https://images.unsplash.com/photo-1557053964-937650b63311?w=400',   // Oud Al Layl
+  'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400', // Layton
+  'https://images.unsplash.com/photo-1592945403252-ca22ba89b1a3?w=400', // Wood Sage
+  'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400', // Colonia
+  'https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?w=400', // Oud for Greatness
+  'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400', // Flowerbomb
+  'https://images.unsplash.com/photo-1603903631918-a50a0d854e3e?w=400', // Interlude Man
 ];
 
 export const PERFUMES: Perfume[] = [
@@ -228,7 +238,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       'Santal 33 has arguably done more to define a particular strain of contemporary New York cool than any other fragrance. Its unusual accord — Australian sandalwood, cardamom, iris, violet, and papyrus — creates something that smells like the American West filtered through a downtown Manhattan sensibility. It became such a signature of a certain creative class that writer Molly Young famously wrote that "you can smell Santal 33 everywhere in New York." Whether that ubiquity is a selling point or a warning depends entirely on your point of view.',
-    bottleImage: BOTTLE_IMAGES[0],
+    bottleImage: BOTTLE_IMAGES[5],
     concentration: 'EDP',
     priceRange: '$$$',
     mainAccord: 'Woody',
@@ -260,7 +270,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'women',
     description:
       'YSL Black Opium took the oriental template of the original Opium and gave it a thoroughly modern coffee-and-vanilla makeover. The bold coffee accord in the heart is its signature — rich, dark, and slightly addictive — layered over white floral notes and a warm vanilla-patchouli base. It is one of the most successful feminine fragrance launches of the past decade, beloved for its accessibility and for striking a balance between sweetness and edge. The sillage in the first few hours is outstanding, making it a reliable choice for evenings out.',
-    bottleImage: BOTTLE_IMAGES[1],
+    bottleImage: BOTTLE_IMAGES[6],
     concentration: 'EDP',
     priceRange: '$$',
     mainAccord: 'Sweet',
@@ -292,7 +302,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       "Part of Maison Margiela's celebrated Replica line — a collection of fragrances designed to recreate specific sensory memories — Beach Walk captures the essence of Île de Ré off the French Atlantic coast. Sunscreen, salt air, warm skin, and the faint bittersweet quality of coconut husks drying in the sun. It is one of the most technically accomplished fresh-floral compositions of the past decade, remarkable for how precisely it conjures a specific physical sensation: warmth on bare skin, light breeze, sand underfoot. A masterclass in molecular perfumery.",
-    bottleImage: BOTTLE_IMAGES[2],
+    bottleImage: BOTTLE_IMAGES[7],
     concentration: 'EDT',
     priceRange: '$$',
     mainAccord: 'Fresh',
@@ -324,7 +334,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       "Oud Al Layl — Night Oud in Arabic — is Lattafa's best-selling fragrance globally and one of the most celebrated value propositions in the entire fragrance world. Its opening is a dense, smoky oud that is neither aggressive nor medicinal, followed by a classical rose heart inspired by traditional Gulf attar-style perfumery. The warm amber base persists well past the eight-hour mark. In blind tests against European oud fragrances at three times the price, it consistently wins for raw pleasantness. For those new to Arabic perfumery, this is the ideal entry point.",
-    bottleImage: BOTTLE_IMAGES[3],
+    bottleImage: BOTTLE_IMAGES[8],
     concentration: 'EDP',
     priceRange: '$',
     mainAccord: 'Oud',
@@ -356,7 +366,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'men',
     description:
       "Parfums de Marly Layton is widely considered the house's finest achievement and one of the best masculine fragrances of the 2010s. It opens with an unusual lavender and green apple combination that is simultaneously crisp and sweet, before developing into a warm, spiced heart of geranium and cardamom. The base — vanilla, sandalwood, pepper — is beautifully balanced and delivers remarkable longevity. It has that rare quality of a fragrance that works in almost any context, from a job interview to a black-tie event. The bottle, inspired by the stables of Versailles, is suitably magnificent.",
-    bottleImage: BOTTLE_IMAGES[4],
+    bottleImage: BOTTLE_IMAGES[9],
     concentration: 'EDP',
     priceRange: '$$$',
     mainAccord: 'Aromatic',
@@ -388,7 +398,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       'Jo Malone Wood Sage & Sea Salt captures the sensation of standing at the edge of the sea on a grey British morning — ambergris-laced sea salt, earthy sage, and a whisper of driftwood. It became one of the house\'s best-selling compositions almost immediately, prized for its simplicity and for a naturalistic quality that feels genuinely effortless. It layers beautifully with other Jo Malone colognes, as is the house\'s tradition, but stands alone as a complete statement in its own right. Best worn close to the skin; it is not a fragrance that shouts.',
-    bottleImage: BOTTLE_IMAGES[0],
+    bottleImage: BOTTLE_IMAGES[10],
     concentration: 'EDC',
     priceRange: '$$',
     mainAccord: 'Aromatic',
@@ -420,7 +430,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       "Acqua di Parma Colonia has been in continuous production since 1916, making it one of the oldest continuously produced fragrances in the world. Its hesperidic structure — a brilliant top of lemon and bergamot over a base of vetiver, patchouli, and sandalwood — is the archetype of the Italian cologne tradition. Elegant, clean, and utterly unimposing, it represents a different philosophy from the statement fragrances of the modern era: the idea that a good scent should enhance, not announce. In heat testing, it outperforms almost every other summer fragrance on the market.",
-    bottleImage: BOTTLE_IMAGES[1],
+    bottleImage: BOTTLE_IMAGES[11],
     concentration: 'EDC',
     priceRange: '$$',
     mainAccord: 'Citrus',
@@ -452,7 +462,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'unisex',
     description:
       "Initio Oud for Greatness has done the remarkable: a niche oud fragrance that has crossed over into mass recognition. Its secret is the generous Ambroxan base that amplifies the smokiness of the oud into something almost symphonic, while a vanilla-benzoin accord prevents the composition from becoming harsh. The result is bold, cinematic, and unmistakably present — the sort of fragrance that walks into a room before you do. Reader surveys consistently rank it among the most reliable compliment-generating fragrances available, regardless of price point.",
-    bottleImage: BOTTLE_IMAGES[2],
+    bottleImage: BOTTLE_IMAGES[12],
     concentration: 'Parfum',
     priceRange: '$$$$',
     mainAccord: 'Oud',
@@ -484,7 +494,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'women',
     description:
       "Viktor&Rolf Flowerbomb lives up to its name: a concentrated explosion of floral notes wrapped in a sweet-powdery-patchouli base that reads as both romantic and formidably opulent. The opening is sharp and faceted — bergamot and tea — before collapsing into an overwhelming rose-jasmine-orchid heart that sweetens further into the dry-down. It is one of the most successful feminine launches of the 2000s, beloved for its unconditional femininity and for the hand-grenade bottle, one of the most recognisable in modern perfumery. Best suited to cooler months where its richness can fully develop.",
-    bottleImage: BOTTLE_IMAGES[3],
+    bottleImage: BOTTLE_IMAGES[13],
     concentration: 'EDP',
     priceRange: '$$',
     mainAccord: 'Floral',
@@ -516,7 +526,7 @@ export const PERFUMES: Perfume[] = [
     gender: 'men',
     description:
       "Amouage Interlude Man is frequently cited by perfume critics as one of the greatest masculine fragrances of the 21st century. It is uncompromising and complex — a smoky, incense-forward composition that opens with bergamot and oregano before revealing a labyrinthine heart of rose, oud, and tobacco, grounding out in sandalwood and amber. It takes a full day to fully appreciate its arc. Interlude Man is not for the casual fragrance enthusiast; it demands engagement and rewards it with something that feels genuinely rare. The Omani oud used in the base is of exceptional quality.",
-    bottleImage: BOTTLE_IMAGES[4],
+    bottleImage: BOTTLE_IMAGES[14],
     concentration: 'EDP',
     priceRange: '$$$$',
     mainAccord: 'Smoky',

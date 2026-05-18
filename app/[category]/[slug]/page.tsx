@@ -45,9 +45,7 @@ export default function ArticleRoute({ params }: Props) {
     <>
       <ArticleSchema article={article} />
       <Header />
-      <div style={{ paddingTop: '60px' }}>
-        <ArticlePage article={article} related={related} topArticles={topArticles} />
-      </div>
+      <ArticlePage article={article} related={related} topArticles={topArticles} />
       <Footer />
     </>
   );

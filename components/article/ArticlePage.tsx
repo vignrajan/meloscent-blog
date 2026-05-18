@@ -87,7 +87,7 @@ export default function ArticlePage({ article, related, topArticles }: ArticlePa
         </article>
 
         {/* Right: sticky sidebar */}
-        <aside style={{ position: 'sticky', top: '80px', alignSelf: 'start' }}>
+        <aside style={{ position: 'sticky', top: '84px', alignSelf: 'start' }}>
           {article.affiliateProducts && article.affiliateProducts.length > 0 && (
             <div style={{ marginBottom: '32px' }}>
               <h4 style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9A9590', marginBottom: '12px' }}>Featured Products</h4>

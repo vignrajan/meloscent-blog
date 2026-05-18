@@ -26,7 +26,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main style={{ maxWidth: '640px', margin: '0 auto', padding: '100px 24px 80px' }}>
+      <main style={{ maxWidth: '640px', margin: '0 auto', padding: '48px 24px 80px' }}>
         <h1 style={{ fontSize: '40px', fontWeight: 700, letterSpacing: '-0.025em', color: '#111111', margin: '0 0 8px', lineHeight: 1.1 }}>
           Contact Us
         </h1>
