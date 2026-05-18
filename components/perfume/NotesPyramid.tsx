@@ -11,9 +11,9 @@ function NotePill({ note }: { note: string }) {
         fontSize: '12px',
         padding: '3px 10px',
         borderRadius: '20px',
-        backgroundColor: 'rgba(255,255,255,0.7)',
-        color: '#333',
-        border: '1px solid rgba(0,0,0,0.08)',
+        backgroundColor: '#FFFFFF',
+        color: '#374151',
+        border: '1px solid #E5E7EB',
         whiteSpace: 'nowrap',
         fontWeight: 500,
       }}
@@ -73,21 +73,21 @@ export default function NotesPyramid({ notes }: NotesPyramidProps) {
       <PyramidTier
         label="TOP"
         notes={notes.top}
-        bgColor="#FEF9C3"
+        bgColor="#FEF9EE"
         width="60%"
         borderRadius="8px 8px 0 0"
       />
       <PyramidTier
         label="HEART"
         notes={notes.heart}
-        bgColor="#FEF3C7"
+        bgColor="#FEF3E4"
         width="80%"
         borderRadius="0"
       />
       <PyramidTier
         label="BASE"
         notes={notes.base}
-        bgColor="#FEE6C7"
+        bgColor="#FEEAD4"
         width="100%"
         borderRadius="0 0 8px 8px"
       />

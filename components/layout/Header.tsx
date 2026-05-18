@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Search } from 'lucide-react';
+import { Search, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import MobileMenu from './MobileMenu';
 
 const NAV_LINKS = [
   { label: 'Finder', href: '/perfumes' },
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [query, setQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   function handleSearch(e: React.FormEvent) {
@@ -89,7 +91,18 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          className="show-mobile"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '4px', display: 'flex', alignItems: 'center' }}
+          aria-label="Open menu"
+        >
+          <Menu size={22} />
+        </button>
       </div>
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }

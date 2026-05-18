@@ -9,13 +9,12 @@ export default function TrendingBar({ articles }: TrendingBarProps) {
 
   return (
     <div style={{
-      backgroundColor: '#0F0D0A',
+      backgroundColor: '#111111',
       padding: '8px 16px',
       display: 'flex',
       alignItems: 'center',
       gap: '12px',
       overflow: 'hidden',
-      marginTop: '60px',
     }}>
       <span style={{
         backgroundColor: '#E63946',
