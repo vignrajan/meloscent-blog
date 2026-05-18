@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { ARTICLES, CATEGORIES, AUTHORS } from '@/lib/mockData';
+import { PERFUMES } from '@/lib/perfumeData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://meloscent.com';
@@ -33,5 +34,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...categoryPages, ...articlePages, ...authorPages];
+  const perfumePages: MetadataRoute.Sitemap = PERFUMES.map((p) => ({
+    url: `${base}/perfumes/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  const perfumeIndexPage: MetadataRoute.Sitemap = [
+    { url: `${base}/perfumes`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+  ];
+
+  return [...staticPages, ...categoryPages, ...articlePages, ...authorPages, ...perfumeIndexPage, ...perfumePages];
 }

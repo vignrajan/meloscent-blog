@@ -7,6 +7,7 @@ import ArticleGrid from '@/components/home/ArticleGrid';
 import DupeSpotlight from '@/components/home/DupeSpotlight';
 import LatestFeed from '@/components/home/LatestFeed';
 import NewsletterBanner from '@/components/home/NewsletterBanner';
+import PerfumeTeaser from '@/components/home/PerfumeTeaser';
 import { ARTICLES, getFeaturedArticle, getRecentArticles, getArticlesByCategory } from '@/lib/mockData';
 
 export const revalidate = 3600;
@@ -32,6 +33,7 @@ export default function HomePage() {
         <ArticleGrid articles={secondary} columns={3} className="mb-12" />
       </main>
       <DupeSpotlight articles={dupeArticles.length >= 4 ? dupeArticles : ARTICLES.slice(0, 4)} />
+      <PerfumeTeaser />
       <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <LatestFeed articles={recent.slice(0, 6)} topArticles={recent} />
       </main>
