@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'Niche', href: '/niche' },
   { label: 'Seasonal', href: '/seasonal' },
   { label: 'TikTok', href: '/tiktok' },
+  { label: 'Perfumes', href: '/perfumes' },
 ];
 
 export default function Header() {
