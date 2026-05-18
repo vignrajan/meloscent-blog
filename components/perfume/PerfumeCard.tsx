@@ -2,45 +2,38 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Perfume } from '@/lib/perfumeData';
+import { Clock } from 'lucide-react';
+import type { Perfume } from '@/lib/perfumeData';
 
-const ACCORD_COLORS: Record<string, string> = {
-  Woody: '#8B6F47',
-  Citrus: '#F5A623',
-  Floral: '#E8A0BF',
-  Aromatic: '#7B9E87',
-  Musky: '#C4A882',
-  'Amber/Warm': '#C9843C',
-  Fresh: '#7EC8C8',
-  Spicy: '#C24B2A',
-  Sweet: '#D4899A',
-  Powdery: '#C8A8C8',
-  Smoky: '#8B8B8B',
-  Fruity: '#E8733A',
-  Green: '#6B9E5E',
-  Leather: '#8B5E3C',
-  Oud: '#5C3317',
-  Vanilla: '#D4A853',
-};
+// Deterministic pastel bg per perfume slug
+const PASTEL_COLORS = [
+  '#FFFDE7', // pale yellow
+  '#FFF3E0', // pale peach
+  '#CCFBF1', // pale mint
+  '#FCE4EC', // pale pink
+  '#F3E5F5', // pale lavender
+  '#E8F5E9', // pale green
+  '#E3F2FD', // pale blue
+  '#FFF8E1', // pale amber
+];
 
-function LongevityDots({ value, max = 5 }: { value: number; max?: number }) {
-  return (
-    <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
-      {Array.from({ length: max }).map((_, i) => (
-        <span
-          key={i}
-          style={{
-            width: '7px',
-            height: '7px',
-            borderRadius: '50%',
-            backgroundColor: i < value ? '#C9A84C' : '#E8E4DE',
-            display: 'inline-block',
-            flexShrink: 0,
-          }}
-        />
-      ))}
-    </div>
-  );
+function getCardColor(slug: string): string {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash << 5) - hash + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  return PASTEL_COLORS[Math.abs(hash) % PASTEL_COLORS.length];
+}
+
+// Convert 1-5 longevity → x.x out of 10
+function longevityScore(val: number): string {
+  return (val * 1.8 + 1).toFixed(1);
+}
+
+// Convert 1-5 sillage → x.x out of 10
+function sillageScore(val: number): string {
+  return (val * 1.5 + 1.5).toFixed(1);
 }
 
 interface PerfumeCardProps {
@@ -49,141 +42,99 @@ interface PerfumeCardProps {
 }
 
 export default function PerfumeCard({ perfume, size = 'medium' }: PerfumeCardProps) {
-  const isSmall = size === 'small';
-  const accordColor = ACCORD_COLORS[perfume.mainAccord] ?? '#9A9590';
+  const bgColor = getCardColor(perfume.slug);
+  const topNotes = perfume.notes.top.slice(0, 3).map((n) => n.toLowerCase()).join(' · ');
+  const concentration = perfume.concentration === 'Parfum' ? 'P' : perfume.concentration;
+  const imageHeight = size === 'small' ? '160px' : '210px';
 
   return (
-    <Link
-      href={`/perfumes/${perfume.slug}`}
-      style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-    >
+    <Link href={`/perfumes/${perfume.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
       <div
         style={{
           backgroundColor: '#FFFFFF',
-          borderRadius: '10px',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.07)',
+          borderRadius: '16px',
+          border: '1px solid #F0F0F0',
           overflow: 'hidden',
-          transition: 'transform 200ms ease, box-shadow 200ms ease',
+          transition: 'box-shadow 200ms ease, transform 200ms ease',
           cursor: 'pointer',
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
+          const el = e.currentTarget as HTMLElement;
+          el.style.boxShadow = '0 8px 28px rgba(0,0,0,0.10)';
+          el.style.transform = 'translateY(-3px)';
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 1px 3px rgba(0,0,0,0.07)';
+          const el = e.currentTarget as HTMLElement;
+          el.style.boxShadow = 'none';
+          el.style.transform = 'translateY(0)';
         }}
       >
-        {/* Image */}
-        <div
-          style={{
-            position: 'relative',
-            width: '100%',
-            paddingBottom: isSmall ? '100%' : '125%',
-            backgroundColor: '#F5F2EE',
-          }}
-        >
+        {/* Pastel image area */}
+        <div style={{
+          backgroundColor: bgColor,
+          position: 'relative',
+          height: imageHeight,
+        }}>
+          {/* Gender badge */}
+          <span style={{
+            position: 'absolute', top: '12px', left: '12px', zIndex: 1,
+            fontSize: '11px', fontWeight: 600, color: '#374151',
+            backgroundColor: 'rgba(255,255,255,0.9)', borderRadius: '100px',
+            padding: '3px 10px', letterSpacing: '0.05em',
+          }}>
+            {perfume.gender.toUpperCase()}
+          </span>
+          {/* Year badge */}
+          <span style={{
+            position: 'absolute', top: '12px', right: '12px', zIndex: 1,
+            fontSize: '11px', fontWeight: 500, color: '#6B7280',
+            backgroundColor: 'rgba(255,255,255,0.9)', borderRadius: '100px',
+            padding: '3px 10px',
+          }}>
+            {perfume.year}
+          </span>
+          {/* Bottle image */}
           <Image
             src={perfume.bottleImage}
-            alt={`${perfume.brand} ${perfume.name} bottle`}
+            alt={`${perfume.brand} ${perfume.name}`}
             fill
-            style={{ objectFit: 'cover', borderRadius: '8px 8px 0 0' }}
-            sizes={isSmall ? '200px' : '300px'}
+            style={{ objectFit: 'contain', padding: '32px 24px' }}
+            sizes={size === 'small' ? '180px' : '300px'}
           />
         </div>
 
-        {/* Content */}
-        <div style={{ padding: isSmall ? '10px' : '14px' }}>
-          {/* Brand */}
-          <p
-            style={{
-              fontSize: '10px',
-              fontWeight: 600,
-              color: '#C9A84C',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              margin: '0 0 4px 0',
-            }}
-          >
+        {/* Text content */}
+        <div style={{ padding: '16px 16px 14px' }}>
+          <p style={{
+            fontSize: '11px', fontWeight: 600, color: '#9CA3AF',
+            textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 3px',
+          }}>
             {perfume.brand}
           </p>
-
-          {/* Name */}
-          <h3
-            style={{
-              fontSize: isSmall ? '14px' : '16px',
-              fontWeight: 600,
-              color: '#111111',
-              margin: '0 0 8px 0',
-              lineHeight: 1.3,
-            }}
-          >
+          <h3 style={{
+            fontSize: size === 'small' ? '16px' : '20px',
+            fontWeight: 700, color: '#111111',
+            margin: '0 0 5px', lineHeight: 1.2,
+          }}>
             {perfume.name}
           </h3>
+          <p style={{ fontSize: '13px', color: '#6B7280', margin: '0 0 14px' }}>
+            {topNotes}
+          </p>
 
-          {/* Badges row */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '8px' }}>
-            {/* Gender badge */}
-            <span
-              style={{
-                fontSize: '10px',
-                fontWeight: 500,
-                padding: '2px 7px',
-                borderRadius: '20px',
-                backgroundColor: '#F5F2EE',
-                color: '#666',
-                textTransform: 'capitalize',
-              }}
-            >
-              {perfume.gender}
+          {/* Score row */}
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Clock size={13} style={{ color: '#9CA3AF', flexShrink: 0 }} />
+            <span style={{ fontSize: '13px', fontWeight: 600, color: '#374151', marginLeft: '4px', marginRight: '14px' }}>
+              {longevityScore(perfume.longevity)}
             </span>
-            {/* Concentration badge */}
-            <span
-              style={{
-                fontSize: '10px',
-                fontWeight: 500,
-                padding: '2px 7px',
-                borderRadius: '20px',
-                backgroundColor: '#F5F2EE',
-                color: '#666',
-              }}
-            >
-              {perfume.concentration}
+            <span style={{ fontSize: '14px', lineHeight: 1 }}>🌈</span>
+            <span style={{ fontSize: '13px', fontWeight: 600, color: '#374151', marginLeft: '4px', flex: 1 }}>
+              {sillageScore(perfume.sillage)}
             </span>
-          </div>
-
-          {/* Accord chip + Price */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <span
-              style={{
-                fontSize: '11px',
-                fontWeight: 500,
-                padding: '2px 8px',
-                borderRadius: '20px',
-                backgroundColor: accordColor + '22',
-                color: accordColor,
-                border: `1px solid ${accordColor}44`,
-              }}
-            >
-              {perfume.mainAccord}
+            <span style={{ fontSize: '11px', fontWeight: 500, color: '#9CA3AF' }}>
+              {concentration}
             </span>
-            <span
-              style={{
-                fontSize: '12px',
-                fontWeight: 500,
-                color: '#9A9590',
-                letterSpacing: '0.04em',
-              }}
-            >
-              {perfume.priceRange}
-            </span>
-          </div>
-
-          {/* Longevity dots */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '10px', color: '#9A9590' }}>Longevity</span>
-            <LongevityDots value={perfume.longevity} />
           </div>
         </div>
       </div>
