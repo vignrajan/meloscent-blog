@@ -4,14 +4,16 @@ import Link from 'next/link';
 import { Search, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import MobileMenu from './MobileMenu';
+import { headerSlideDown } from '@/lib/motion';
 
 const NAV_LINKS = [
   { label: 'Finder', href: '/perfumes' },
-  { label: 'Men', href: '/perfumes?gender=men' },
-  { label: 'Women', href: '/perfumes?gender=women' },
-  { label: 'Date Night', href: '/perfumes?occasion=date-night' },
-  { label: 'Office', href: '/perfumes?occasion=office' },
+  { label: 'Dupes', href: '/perfumes?tag=dupe' },
+  { label: 'Magazine', href: '/guides' },
+  { label: 'Notes', href: '/notes' },
+  { label: 'Brands', href: '/brands' },
 ];
 
 export default function Header() {
@@ -21,20 +23,27 @@ export default function Header() {
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    if (query.trim()) router.push(`/perfumes?q=${encodeURIComponent(query.trim())}`);
+    if (query.trim()) router.push(`/search?q=${encodeURIComponent(query.trim())}`);
   }
 
   return (
-    <header style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      backgroundColor: '#FFFFFF',
-      borderBottom: '1px solid #E5E7EB',
-      height: '70px',
-      display: 'flex',
-      alignItems: 'center',
-    }}>
+    <motion.header
+      variants={headerSlideDown}
+      initial="initial"
+      animate="animate"
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        backgroundColor: 'rgba(247,244,240,0.88)',
+        backdropFilter: 'saturate(180%) blur(12px)',
+        WebkitBackdropFilter: 'saturate(180%) blur(12px)',
+        borderBottom: '1px solid rgba(0,0,0,0.07)',
+        height: '56px',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
       <div style={{
         maxWidth: '1280px',
         margin: '0 auto',
@@ -45,20 +54,22 @@ export default function Header() {
         gap: '24px',
       }}>
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
           <div style={{
-            width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#111111',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#111111',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}>
-            <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', lineHeight: 1 }}>M</span>
+            <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>M</span>
           </div>
-          <span style={{ fontSize: '18px', fontWeight: 700, color: '#111111', letterSpacing: '-0.01em' }}>Meloscent</span>
+          <span style={{ fontSize: '17px', fontWeight: 700, color: '#111111', letterSpacing: '-0.02em' }}>
+            Melo<span style={{ color: '#B8860B' }}>scent</span>
+          </span>
         </Link>
 
         {/* Search bar */}
-        <form onSubmit={handleSearch} style={{ flex: 1, maxWidth: '560px' }}>
+        <form onSubmit={handleSearch} style={{ flex: 1, maxWidth: '480px' }}>
           <div style={{ position: 'relative' }}>
-            <Search size={15} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF', pointerEvents: 'none' }} />
+            <Search size={14} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF', pointerEvents: 'none' }} />
             <input
               type="text"
               value={query}
@@ -66,11 +77,11 @@ export default function Header() {
               placeholder="Search perfumes, brands, notes..."
               style={{
                 width: '100%',
-                padding: '10px 16px 10px 40px',
-                fontSize: '14px',
+                padding: '8px 16px 8px 36px',
+                fontSize: '13px',
                 borderRadius: '100px',
                 border: '1.5px solid #E5E7EB',
-                backgroundColor: '#FAFAFA',
+                backgroundColor: '#FFFFFF',
                 color: '#111111',
                 outline: 'none',
                 boxSizing: 'border-box',
@@ -80,12 +91,12 @@ export default function Header() {
         </form>
 
         {/* Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px', flexShrink: 0 }} className="hidden-mobile">
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '24px', flexShrink: 0 }} className="hidden-mobile">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{ fontSize: '14px', fontWeight: 500, color: '#374151', textDecoration: 'none', whiteSpace: 'nowrap' }}
+              style={{ fontSize: '13px', fontWeight: 500, color: '#374151', textDecoration: 'none', whiteSpace: 'nowrap' }}
             >
               {link.label}
             </Link>
@@ -96,13 +107,13 @@ export default function Header() {
         <button
           onClick={() => setMenuOpen(true)}
           className="show-mobile"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '4px', display: 'flex', alignItems: 'center' }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '4px', display: 'flex', alignItems: 'center', marginLeft: 'auto' }}
           aria-label="Open menu"
         >
-          <Menu size={22} />
+          <Menu size={20} />
         </button>
       </div>
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </header>
+    </motion.header>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import PerfumeCard from '@/components/perfume/PerfumeCard';
-import { PERFUMES } from '@/lib/perfumeData';
+import { PERFUMES } from '@/lib/mockPerfumes';
 
 const FEATURED = PERFUMES.slice(0, 4);
 

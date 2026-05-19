@@ -11,25 +11,53 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid #F3F4F6', backgroundColor: '#FFFFFF', padding: '32px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#111111', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '12px' }}>M</span>
+    <footer style={{ backgroundColor: '#0F0D0A', padding: '48px 0 32px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '40px', marginBottom: '40px' }}>
+          <div style={{ maxWidth: '280px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ color: '#111111', fontWeight: 700, fontSize: '13px' }}>M</span>
+              </div>
+              <span style={{ fontSize: '16px', fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.02em' }}>
+                Melo<span style={{ color: '#B8860B' }}>scent</span>
+              </span>
+            </div>
+            <p style={{ fontSize: '13px', color: '#6B6460', lineHeight: 1.6, margin: 0 }}>
+              Your guide to finding the perfect fragrance. Reviews, dupes, and discovery — all in one place.
+            </p>
           </div>
-          <span style={{ fontSize: '14px', fontWeight: 600, color: '#111111' }}>Meloscent</span>
-          <span style={{ fontSize: '13px', color: '#9CA3AF' }}>© 2026</span>
+          <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
+            <div>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: '#6B6460', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>Explore</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {[['Finder', '/perfumes'], ['Dupes', '/perfumes?tag=dupe'], ['Brands', '/brands'], ['Notes', '/notes']].map(([label, href]) => (
+                  <Link key={href} href={href} style={{ fontSize: '13px', color: '#9A9590', textDecoration: 'none' }}>{label}</Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: '#6B6460', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>Magazine</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {[['Reviews', '/reviews'], ['Guides', '/guides'], ['Seasonal', '/seasonal'], ['Education', '/education']].map(([label, href]) => (
+                  <Link key={href} href={href} style={{ fontSize: '13px', color: '#9A9590', textDecoration: 'none' }}>{label}</Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: '#6B6460', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>Company</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {LINKS.map((l) => (
+                  <Link key={l.href} href={l.href} style={{ fontSize: '13px', color: '#9A9590', textDecoration: 'none' }}>{l.label}</Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        <nav style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-          {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} style={{ fontSize: '13px', color: '#6B7280', textDecoration: 'none' }}>
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-        <p style={{ fontSize: '12px', color: '#9CA3AF', margin: 0 }}>
-          All affiliate links are disclosed.
-        </p>
+        <div style={{ borderTop: '1px solid #1C1A17', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+          <span style={{ fontSize: '12px', color: '#6B6460' }}>© 2026 Meloscent. All rights reserved.</span>
+          <span style={{ fontSize: '12px', color: '#6B6460' }}>All affiliate links are disclosed.</span>
+        </div>
       </div>
     </footer>
   );

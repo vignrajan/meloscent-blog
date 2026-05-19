@@ -1,4 +1,4 @@
-import { Perfume } from '@/lib/perfumeData';
+import { Perfume } from '@/lib/mockPerfumes';
 import PerfumeCard from './PerfumeCard';
 
 interface SimilarFragrancesProps {
