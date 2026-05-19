@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import type { Perfume } from '@/lib/mockPerfumes';
@@ -55,12 +54,15 @@ export default function PerfumeCard({ perfume, size = 'medium' }: PerfumeCardPro
           }}>
             {perfume.year}
           </span>
-          <Image
+          <img
             src={perfume.image}
             alt={`${perfume.brand} ${perfume.name}`}
-            fill
-            style={{ objectFit: 'contain', padding: size === 'small' ? '20px 16px' : '28px 20px' }}
-            sizes={size === 'small' ? '200px' : '320px'}
+            style={{
+              position: 'absolute', inset: 0, width: '100%', height: '100%',
+              objectFit: 'contain',
+              padding: size === 'small' ? '20px 16px' : '28px 20px',
+              boxSizing: 'border-box',
+            }}
           />
         </div>
 
