@@ -11,7 +11,7 @@ import { headerSlideDown } from '@/lib/motion';
 const NAV_LINKS = [
   { label: 'Finder', href: '/perfumes' },
   { label: 'Dupes', href: '/perfumes?tag=dupe' },
-  { label: 'Magazine', href: '/guides' },
+  { label: 'Magazine', href: '/blog' },
   { label: 'Notes', href: '/notes' },
   { label: 'Brands', href: '/brands' },
 ];

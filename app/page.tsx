@@ -231,12 +231,12 @@ export default function HomePage() {
               <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#111111', margin: 0, letterSpacing: '-0.02em' }}>
                 From the magazine
               </h2>
-              <Link href="/guides" style={{ fontSize: '13px', color: '#6B7280', textDecoration: 'none', fontWeight: 500 }}>View all →</Link>
+              <Link href="/blog" style={{ fontSize: '13px', color: '#6B7280', textDecoration: 'none', fontWeight: 500 }}>View all →</Link>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} className="grid-2col">
               {/* Featured large */}
-              <Link href={`/${featuredArticles[0].category.toLowerCase()}/${featuredArticles[0].slug}`} style={{ textDecoration: 'none' }}>
+              <Link href={`/blog/${featuredArticles[0].slug}`} style={{ textDecoration: 'none' }}>
                 <div style={{
                   borderRadius: '16px', overflow: 'hidden', backgroundColor: '#FFFFFF',
                   border: '1px solid #E8E4DE', height: '100%',
@@ -265,7 +265,7 @@ export default function HomePage() {
               {/* Smaller articles */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {featuredArticles.slice(1).map((article) => (
-                  <Link key={article.slug} href={`/${article.category.toLowerCase()}/${article.slug}`} style={{ textDecoration: 'none' }}>
+                  <Link key={article.slug} href={`/blog/${article.slug}`} style={{ textDecoration: 'none' }}>
                     <div style={{
                       display: 'flex', gap: '16px', backgroundColor: '#FFFFFF',
                       borderRadius: '12px', padding: '16px', border: '1px solid #E8E4DE',
