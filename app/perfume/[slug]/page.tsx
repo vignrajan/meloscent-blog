@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import PerfumeCard from '@/components/perfume/PerfumeCard';
@@ -136,13 +135,13 @@ export default function PerfumeDetailPage({ params }: Props) {
                 }}>
                   {perfume.year}
                 </span>
-                <Image
+                <img
                   src={perfume.image}
                   alt={`${perfume.brand} ${perfume.name} bottle`}
-                  fill
-                  style={{ objectFit: 'contain', padding: '32px' }}
-                  sizes="360px"
-                  priority
+                  style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    objectFit: 'contain', padding: '32px', boxSizing: 'border-box',
+                  }}
                 />
               </div>
 
