@@ -24,6 +24,10 @@ const CATEGORY_COLORS: Record<string, string> = {
   seasonal: '#DCFCE7',
   tiktok: '#FFE4E6',
   luxury: '#FEF9C3',
+  reviews: '#FEE2E2',
+  guides: '#DBEAFE',
+  education: '#FEF9C3',
+  tips: '#DCFCE7',
 };
 
 export default function CategoryPage({ params }: Props) {
@@ -31,7 +35,7 @@ export default function CategoryPage({ params }: Props) {
   if (!category) notFound();
 
   const articles = getArticlesByCategory(params.category);
-  const bgTint = CATEGORY_COLORS[params.category] ?? '#F5F2EE';
+  const bgTint = CATEGORY_COLORS[params.category] ?? '#F7F4F0';
 
   return (
     <>

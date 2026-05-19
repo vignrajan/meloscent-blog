@@ -15,32 +15,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Hide scrollbar utility */
+/* Scrollbar hide utility */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* Responsive nav helpers */
-@media (max-width: 768px) {
-  .hidden-mobile { display: none !important; }
-}
-@media (min-width: 769px) {
-  .show-mobile { display: none !important; }
-}
-
-/* Responsive grid helpers */
-@media (max-width: 1024px) {
-  .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
-  .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .latest-feed { grid-template-columns: 1fr !important; }
-  .article-layout { grid-template-columns: 1fr !important; }
-  .hero-card { flex-direction: column !important; }
-  .hero-left { width: 100% !important; }
-}
-@media (max-width: 640px) {
-  .grid-2col { grid-template-columns: 1fr !important; }
-  .newsletter-grid { grid-template-columns: 1fr !important; }
-}
 
 /* Marquee animation */
 @keyframes marquee {
@@ -48,13 +25,13 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* Page transitions */
+/* Page transition */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive nav helpers */
+/* Nav visibility helpers */
 @media (max-width: 768px) {
   .hidden-mobile { display: none !important; }
 }
@@ -62,17 +39,29 @@ body {
   .show-mobile { display: none !important; }
 }
 
-/* Responsive grid helpers */
+/* Responsive grid breakpoints */
 @media (max-width: 1024px) {
   .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
   .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
   .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .latest-feed { grid-template-columns: 1fr !important; }
   .article-layout { grid-template-columns: 1fr !important; }
-  .hero-card { flex-direction: column !important; }
+  .hero-card { grid-template-columns: 1fr !important; }
   .hero-left { width: 100% !important; }
 }
 @media (max-width: 640px) {
   .grid-2col { grid-template-columns: 1fr !important; }
   .newsletter-grid { grid-template-columns: 1fr !important; }
+  .grid-3col { grid-template-columns: 1fr !important; }
+  .grid-4col { grid-template-columns: 1fr !important; }
+}
+
+/* Link hover states */
+a:hover { opacity: 0.85; }
+
+/* Input focus ring */
+input:focus, select:focus {
+  outline: none;
+  border-color: #B8860B !important;
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
 }

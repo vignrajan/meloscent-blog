@@ -37,7 +37,7 @@ export default function AboutPage() {
                 <Image src={author.photo} alt={author.name} fill style={{ objectFit: 'cover' }} sizes="80px" />
               </div>
               <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#111111', margin: '0 0 4px' }}>{author.name}</h3>
-              <p style={{ fontSize: '11px', color: '#C9A84C', fontWeight: 500, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' } as React.CSSProperties}>
+              <p style={{ fontSize: '11px', color: '#B8860B', fontWeight: 500, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' } as React.CSSProperties}>
                 {author.specialisation}
               </p>
               <p style={{ fontSize: '14px', color: '#6B6460', lineHeight: 1.6, margin: 0 }}>{author.bio.slice(0, 120)}...</p>
