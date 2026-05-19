@@ -82,6 +82,10 @@ export const CATEGORIES: Category[] = [
   { name: 'Seasonal', slug: { current: 'seasonal' }, description: 'The best fragrances for every season — tested in real-world conditions.', colorKey: 'seasonal' },
   { name: 'TikTok', slug: { current: 'tiktok' }, description: 'Viral fragrance moments, trending scents, and the social media perfume community.', colorKey: 'tiktok' },
   { name: 'Luxury', slug: { current: 'luxury' }, description: 'Investment-worthy bottles, rare editions, and the fragrances worth saving up for.', colorKey: 'luxury' },
+  { name: 'Reviews', slug: { current: 'reviews' }, description: 'Honest, in-depth fragrance reviews tested over multiple wearings.', colorKey: 'news' },
+  { name: 'Guides', slug: { current: 'guides' }, description: 'Buying guides, beginner resources, and expert recommendations for every occasion.', colorKey: 'niche' },
+  { name: 'Education', slug: { current: 'education' }, description: 'Everything you need to know about fragrance — notes, families, techniques.', colorKey: 'luxury' },
+  { name: 'Tips', slug: { current: 'tips' }, description: 'Practical advice on wearing, storing, and getting the most from your fragrances.', colorKey: 'seasonal' },
 ];
 
 const makeBody = (paragraphs: string[]): BodyBlock[] =>

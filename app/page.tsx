@@ -79,7 +79,7 @@ export default function HomePage() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Try &quot;oud for beginners&quot; or &quot;Chanel No.5&quot;..."
+                  placeholder="Try 'oud for beginners' or 'Chanel No.5'..."
                   style={{
                     width: '100%',
                     padding: '18px 60px 18px 52px',
@@ -289,6 +289,45 @@ export default function HomePage() {
               </div>
             </div>
           </motion.div>
+        </section>
+
+        {/* Newsletter */}
+        <section style={{ backgroundColor: '#111111', padding: '56px 24px' }}>
+          <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#B8860B', marginBottom: '12px' }}>
+              NEWSLETTER
+            </p>
+            <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#F5F0E8', margin: '0 0 12px', letterSpacing: '-0.02em' }}>
+              The weekly scent edit
+            </h2>
+            <p style={{ fontSize: '15px', color: '#6B6460', marginBottom: '28px', lineHeight: 1.6 }}>
+              New reviews, the best dupes, and seasonal picks — every Thursday.
+            </p>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              style={{ display: 'flex', gap: '8px', maxWidth: '440px', margin: '0 auto' }}
+            >
+              <input
+                type="email"
+                placeholder="your@email.com"
+                style={{
+                  flex: 1, padding: '12px 20px', fontSize: '14px',
+                  borderRadius: '100px', border: '1px solid #2A2720',
+                  backgroundColor: '#1C1A17', color: '#F5F0E8', outline: 'none',
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '12px 24px', backgroundColor: '#B8860B', color: '#FFFFFF',
+                  borderRadius: '100px', border: 'none', fontSize: '14px',
+                  fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
+                }}
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </section>
 
       </main>

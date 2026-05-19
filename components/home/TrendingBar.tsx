@@ -1,4 +1,4 @@
-import type { Article } from '@/lib/mockData';
+import type { Article } from '@/lib/mockArticles';
 
 interface TrendingBarProps {
   articles: Article[];
