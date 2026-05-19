@@ -1,7 +1,5 @@
-import { Perfume } from '@/lib/perfumeData';
-
 interface NotesPyramidProps {
-  notes: Perfume['notes'];
+  notes: { top: string[]; heart: string[]; base: string[] };
 }
 
 function NotePill({ note }: { note: string }) {

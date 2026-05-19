@@ -1,7 +1,11 @@
-import { PerfumeAccord } from '@/lib/perfumeData';
+interface AccordItem {
+  name: string;
+  strength: number;
+  color: string;
+}
 
 interface AccordsChartProps {
-  accords: PerfumeAccord[];
+  accords: AccordItem[];
 }
 
 export default function AccordsChart({ accords }: AccordsChartProps) {

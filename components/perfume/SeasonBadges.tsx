@@ -1,8 +1,6 @@
-import { Perfume } from '@/lib/perfumeData';
-
 interface SeasonBadgesProps {
-  seasons: Perfume['seasons'];
-  timeOfDay: Perfume['timeOfDay'];
+  seasons: string[];
+  timeOfDay: string[];
 }
 
 const SEASONS = [
